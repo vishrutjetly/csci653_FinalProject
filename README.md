@@ -1,6 +1,9 @@
 # CSCI-653: Final Project -- Visualizing Loss Landscape
 
-![Example](images/3DExample_rough.jpg)![](images/3DExample_smooth.jpg)
+<p align="center">
+  <img src="images/3DExample_rough.jpg" />
+  <img src="images/3DExample_smooth.jpg" />
+</p>
 
 While training neural nets, the loss function is a function of the model architecture, the optimisation method, initialisation, etc. Yet, the effect of these choices on the resulting objective is unclear. We visualise loss function convergence to gain insights into the training. Visualisation of landscapes offers richer insights and helps explain why neural nets can optimise even extremely complex non-convex functions and why the minimum optimised generalises well.
 Given a network architecture and its pre-trained parameters, we calculate and visualize the loss surface along random direction near the optimal parameters. 
@@ -9,13 +12,17 @@ Given a network architecture and its pre-trained parameters, we calculate and vi
 
 The 1D linear interpolation method evaluates the loss values along the direction between two minimizers of the same network loss function. This method has been used to compare the flatness of minimizers trained with different batch sizes. A 1D linear interpolation plot would look something like this:
 
-![1DExample](images/1DExample.jpg)
+<p align="center">
+  <img src="images/1DExample.jpg" />
+</p>
 
 ## Visualizing 2D loss contours
 
 To plot the loss contours, we choose two random directions with the same dimension as the model parameters and normalize them. A 2D loss contour would look like this:
 
-![2DExample](images/2DExample.jpg)
+<p align="center">
+  <img src="images/2DExample.jpg" />
+</p>
 
 ## Things to try
 
