@@ -36,6 +36,31 @@ To plot the loss contours, we choose two random directions with the same dimensi
 
 5. Does this scheme work for a wide range of networks?
 
+
+## Main question -- Does it really give a correct picture of sharpness/flatness of the minima.
+
+To answer this question I plotted the loss landscape of a simple ANN with 1 hidden layer to classify the cifa10 dataset. As expected the model didn't give good accuracy of predictions, however, its loss landscape (All in 1D, 2D and filter normalized 2D) gave very flat convex minima with nice "bowl" shape as shown in the below figures. 
+
+<p align="center">
+  <img src="images/1D.png" />
+</p>
+
+<p align="center">
+  <img src="images/2D-nonNormalized.png" />
+</p>
+
+<p align="center">
+  <img src="images/2D.png" />
+</p>
+
+This scheme of loss landscape plotting seems to work for more complicated model. I tried plotting the landscape for VGG16 and it gave the following expected results of having non-convex sharp minima as shown in the figure below
+
+<p align="center">
+  <img src="images/VGG.png" />
+</p>
+
+Thus, from my early analysis it looks like this method works only if you use a very deep neural network (with 15+ hidden) layers for this method to classify whether the model will work well or not. Futher, if this method is used for these deep neural networks, computational time required to even compute the loss of different weight vectors is extremely high. I looked into parallelizing these computations to obtain faster results, but it seems unlikely to get performance benefit if you are using a single machine, because tensorflow library itself uses all the computational resources available on a node. Thus, the only way in which we can obtain speedup is if we have separate computing nodes and use MPI for the data exchange.
+
 ## Reference
 
 [1] Hao Li, Zheng Xu, Gavin Taylor, Christoph Studer and Tom Goldstein. [*Visualizing the Loss Landscape of Neural Nets*](https://arxiv.org/abs/1712.09913). NIPS, 2018.
